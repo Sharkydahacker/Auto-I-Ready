@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const { executablePath } =  require('puppeteer');
 const path = require('path');
-//remove this line later when testing is done 💀
 const cookies = require('./cookies.json');
 const fs = require('fs');
 
