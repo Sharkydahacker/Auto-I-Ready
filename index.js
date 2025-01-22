@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const { executablePath } =  require('puppeteer');
 const path = require('path');
-//remove this line later when testing is done 💀
 const cookies = require('./cookies.json');
 const fs = require('fs');
 
@@ -30,15 +29,11 @@ async function reading(minutes, lessons) {
 
   await page.waitForTimeout(5000)
 
-  //farm minutes
-
-  //go into lesson
   let clickLesson = await page.$x("/html/body/div[1]/div[1]/section/div/div[2]/main/div/div/div/div/div/div/div/div")
   await clickLesson[0].click({ waitUntil: 'networkidle0'})
 
   await page.waitForTimeout(10000)
 
-  // now we are into lesson
   let clickLesson2 = await page.$x("/html/body/div[1]/div[1]/section/div/div[1]/div/div/div/div[3]/div/div/div/div/div/div[2]/div/div[2]/div/div/button")
   await clickLesson2[0].click({ waitUntil: 'networkidle0'})
 
@@ -84,10 +79,8 @@ async function math(minutes, lessons) {
 };
 
 
-//get args
 let subject = process.argv[2];
 
-//check if reading or math
 if (subject == 'm' || subject == 'math') {
   math()
   return;
@@ -95,5 +88,3 @@ if (subject == 'm' || subject == 'math') {
   reading()
   return;
 }
-
-//TODO: minute farm and lesson skip
